@@ -1,0 +1,189 @@
+/* ===== RESET BÁSICO ===== */
+/* Remove margens e paddings padrão de todos os elementos e ajusta o box-sizing para facilitar o controle de tamanhos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== FUNDO DA PÁGINA ===== */
+/* Aplica uma imagem de fundo centralizada e cobrindo todo o espaço, com layout flexível centralizado */
+.page-bg {
+  position: relative; /* Necessário para posicionamento da camada ::before */
+  background: url("../img/pagina3/Botanic_Fundo.jpg") center/cover no-repeat; /* Imagem de fundo */
+  min-height: 1000px; /* Altura mínima da página */
+  display: flex; /* Usando Flexbox para centralizar conteúdo */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  padding: 40px; /* Espaçamento interno */
+  overflow: hidden; /* Esconde qualquer transbordamento */
+}
+
+/* ===== CAMADA ESCURA SOBRE O FUNDO (50% OPACIDADE) ===== */
+/* Adiciona uma camada semi-transparente para realce do conteúdo sobre a imagem */
+.page-bg::before {
+  content: ""; /* Pseudo-elemento vazio */
+  position: absolute; /* Posicionado sobre a imagem */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 248, 248, 0.69); /* Fundo claro com transparência */
+  z-index: 0; /* Fica atrás do conteúdo principal */
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+/* Limita a largura do conteúdo e define que fique acima da camada escura */
+.content {
+  width: 100%;
+  max-width: 1200px;
+  color: #000000;
+  position: relative; /* Para sobrepor o ::before */
+  z-index: 1;
+}
+
+/* ===== TÍTULO PRINCIPAL ===== */
+/* Estiliza o título da seção centralizado e com sombra para melhor contraste */
+.content h1 {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.9); /* Sombra clara */
+}
+
+/* ===== LINHA FLEXÍVEL (row) ===== */
+/* Organiza os elementos em linha, com espaçamento e quebra em telas pequenas */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Alinha colunas com a mesma altura */
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* Permite quebra de linha */
+}
+
+/* ===== COLUNA MAIOR (texto) ===== */
+.cell-large {
+  width: 900px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* Conteúdo em coluna */
+}
+
+/* ===== COLUNA MENOR (imagem) ===== */
+.cell-small {
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== CAIXA DE TEXTO ===== */
+/* Estiliza a área de conteúdo textual com cor de fundo clara e sombra */
+.text-box {
+  background: rgba(200, 255, 200, 0.85); /* Verde claro com opacidade */
+  border-radius: 15px; /* Cantos arredondados */
+  padding: 20px;
+  line-height: 28px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); /* Sombra leve */
+  flex: 1; /* Preenche o espaço disponível */
+}
+
+/* ===== SUBTÍTULO DENTRO DA CAIXA ===== */
+/* Estiliza o subtítulo do conteúdo textual */
+.text-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* ===== ESTILO GERAL DAS IMAGENS ===== */
+/* Define a aparência geral das imagens */
+.img-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  object-fit: cover; /* Mantém proporção e cobre a área */
+}
+
+/* ===== GARANTE QUE A IMAGEM CRESÇA PARA IGUALAR A CAIXA DE TEXTO ===== */
+.full-height-img {
+  height: 100%; /* Ocupa toda a altura disponível */
+}
+
+/* ===== RESPONSIVIDADE (telas até 768px) ===== */
+/* Adapta o layout para telas menores (tablets e celulares) */
+@media (max-width: 768px) {
+  .row {
+      flex-direction: column; /* Empilha os elementos */
+      align-items: center;
+  }
+
+  .cell-large,
+  .cell-small {
+      width: 100%; /* Ocupa a largura total */
+  }
+
+  .img-box,
+  .full-height-img {
+      height: auto; /* Altura automática */
+      margin-bottom: 20px; /* Espaço abaixo da imagem */
+  }
+
+  .text-box {
+      flex: unset; /* Remove expansão automática */
+  }
+}
+
+/* ===== BOTÕES “Como Chegar” e “Retornar” ===== */
+/* Agrupamento e estilização dos botões */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaçamento entre os botões */
+  margin-top: 40px;
+}
+
+.buttons a {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #e74c3c; /* Vermelho vibrante */
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px; /* Estilo arredondado */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra leve */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative; /* Para os ícones antes do texto */
+}
+
+/* ===== ÍCONE PARA “Como Chegar” ===== */
+.buttons a:nth-child(1)::before {
+  content: "🗺️"; /* Emoji de mapa */
+  margin-right: 8px;
+}
+
+/* ===== ÍCONE PARA “Retornar” ===== */
+.buttons a:nth-child(2)::before {
+  content: "↩️"; /* Emoji de retorno */
+  margin-right: 8px;
+}
+
+/* ===== EFEITO HOVER NOS BOTÕES ===== */
+.buttons a:hover {
+  background: #c0392b; /* Cor mais escura no hover */
+  transform: translateY(-2px); /* Efeito de "saltar" */
+}
+
+/* ===== BOTÕES EM TELAS MENORES ===== */
+/* Ajuste de layout dos botões para telas muito pequenas */
+@media (max-width: 480px) {
+  .buttons {
+      flex-direction: column; /* Empilha os botões verticalmente */
+      gap: 12px;
+  }
+  .buttons a {
+      width: 100%; /* Botões ocupam toda a largura */
+      text-align: center;
+  }
+}

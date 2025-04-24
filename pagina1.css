@@ -1,0 +1,185 @@
+/* ===== RESET BÁSICO ===== */
+/* Remove margens e espaçamentos padrão e configura o box-sizing para incluir bordas e paddings nas dimensões */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== FUNDO DA PÁGINA ===== */
+/* Define o fundo da página com imagem centralizada e cobrindo toda a área. Centraliza o conteúdo usando flexbox */
+.page-bg {
+  position: relative; /* Permite sobreposição com o ::before */
+  background: url("../img/pagina1/Museu_Olho.jpg.webp") center/cover no-repeat; /* Imagem de fundo */
+  min-height: 1000px; /* Altura mínima da seção */
+  display: flex; /* Flexbox para centralização */
+  align-items: center; /* Alinha verticalmente ao centro */
+  justify-content: center; /* Alinha horizontalmente ao centro */
+  padding: 40px; /* Espaçamento interno */
+  overflow: hidden; /* Oculta elementos que ultrapassem a borda */
+}
+
+/* ===== CAMADA ESCURA SOBRE O FUNDO (50% OPACIDADE) ===== */
+/* Adiciona uma camada semi-transparente sobre a imagem para dar contraste ao conteúdo */
+.page-bg::before {
+  content: ""; /* Cria um pseudo-elemento */
+  position: absolute; /* Posicionamento absoluto */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 248, 248, 0.69); /* Cor clara com opacidade */
+  z-index: 0; /* Fica atrás do conteúdo principal */
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+/* Define o container onde todo o conteúdo textual será exibido */
+.content {
+  width: 100%;
+  max-width: 1200px; /* Largura máxima */
+  color: #000000; /* Cor do texto */
+  position: relative; /* Para estar acima da camada ::before */
+  z-index: 1; /* Garante que fique na frente */
+}
+
+/* ===== TÍTULO PRINCIPAL ===== */
+.content h1 {
+  text-align: center; /* Centraliza o título */
+  font-size: 48px; /* Tamanho grande */
+  margin-bottom: 40px; /* Espaçamento inferior */
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.9); /* Sombra clara para destacar no fundo */
+}
+
+/* ===== LINHA FLEXÍVEL (row) ===== */
+/* Cria uma linha de conteúdo com distribuição de colunas */
+.row {
+  display: flex; /* Flexbox para layout em linha */
+  justify-content: space-between; /* Espaçamento entre os elementos */
+  align-items: stretch; /* Alinha verticalmente e iguala altura */
+  margin-bottom: 30px; /* Espaçamento inferior */
+  flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
+}
+
+/* ===== COLUNA MAIOR (texto) ===== */
+.cell-large {
+  width: 900px; /* Largura fixa */
+  padding: 10px; /* Espaçamento interno */
+  display: flex;
+  flex-direction: column; /* Organiza conteúdo em coluna */
+}
+
+/* ===== COLUNA MENOR (imagem) ===== */
+.cell-small {
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== CAIXA DE TEXTO ===== */
+/* Estiliza a área de texto */
+.text-box {
+  background: rgba(200, 255, 200, 0.85); /* Verde claro semi-transparente */
+  border-radius: 15px; /* Cantos arredondados */
+  padding: 20px;
+  line-height: 28px; /* Espaçamento entre linhas */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  flex: 1; /* Ocupa o máximo de espaço disponível */
+}
+
+/* ===== SUBTÍTULO DENTRO DA CAIXA ===== */
+.text-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* ===== ESTILO GERAL DAS IMAGENS ===== */
+.img-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+  object-fit: cover; /* Imagem cobre toda a área sem distorção */
+}
+
+/* ===== GARANTE QUE A IMAGEM CRESÇA PARA IGUALAR A CAIXA DE TEXTO ===== */
+.full-height-img {
+  height: 100%;
+}
+
+/* ===== RESPONSIVIDADE (telas até 768px) ===== */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; /* Empilha as colunas verticalmente */
+    align-items: center; /* Centraliza os elementos */
+  }
+
+  .cell-large,
+  .cell-small {
+    width: 100%; /* Ocupa toda a largura disponível */
+  }
+
+  .img-box,
+  .full-height-img {
+    height: auto; /* Altura automática para manter proporção */
+    margin-bottom: 20px; /* Espaçamento abaixo da imagem */
+  }
+
+  .text-box {
+    flex: unset; /* Remove o crescimento automático */
+  }
+}
+
+/* ===== BOTÕES “Como Chegar” e “Retornar” ===== */
+.buttons {
+  display: flex; /* Layout horizontal */
+  justify-content: center; /* Centraliza os botões */
+  gap: 20px; /* Espaço entre eles */
+  margin-top: 40px; /* Espaço acima dos botões */
+}
+
+/* ===== ESTILO DOS BOTÕES ===== */
+.buttons a {
+  display: inline-block;
+  padding: 12px 30px; /* Espaçamento interno */
+  background: #e74c3c; /* Vermelho vivo */
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px; /* Estilo arredondado/pílula */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+  position: relative; /* Para os ícones pseudo-elementos */
+}
+
+/* ===== ÍCONE PARA “Como Chegar” ===== */
+.buttons a:nth-child(1)::before {
+  content: "🗺️"; /* Emoji de mapa */
+  margin-right: 8px; /* Espaço entre ícone e texto */
+}
+
+/* ===== ÍCONE PARA “Retornar” ===== */
+.buttons a:nth-child(2)::before {
+  content: "↩️"; /* Emoji de retorno */
+  margin-right: 8px;
+}
+
+/* ===== EFEITO HOVER NOS BOTÕES ===== */
+.buttons a:hover {
+  background: #c0392b; /* Cor mais escura no hover */
+  transform: translateY(-2px); /* Eleva levemente o botão */
+}
+
+/* ===== BOTÕES EM TELAS MENORES ===== */
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: column; /* Empilha os botões */
+    gap: 12px;
+  }
+
+  .buttons a {
+    width: 100%; /* Ocupa toda a largura disponível */
+    text-align: center;
+  }
+}

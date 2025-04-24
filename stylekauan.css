@@ -1,0 +1,58 @@
+h1 {
+    color: rgb(255, 253, 253);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+
+
+ul li{
+    display: inline-block;
+    list-style: none;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    justify-content: center;
+    padding: 0 80px 0 0;
+} 
+
+a{
+    text-decoration: none; /* Remove o sublinhado */
+    color: #000000; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte */
+    font-size: 20px; /* Tamanho da fonte */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+#li a:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+    color: #000; /* Cor do texto ao passar o mouse */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+.banner {
+    background-image: url('https://mid-noticias.curitiba.pr.gov.br/2022/00360575.jpg'); /* Imagem de fundo */
+    background-size: cover; /* Cobre todo o espaço */
+    background-position: center; /* Centraliza a imagem */
+    padding: 160px 120px; /* Espaçamento interno */
+    font-family: Arial, sans-serif; /* Fonte */
+    border-radius: 3px; /* Bordas arredondadas */
+    margin: 0px auto; /* Espaçamento externo */
+    max-width: 100%; /* Largura máxima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+     /* Sombra */
+}
+
+nav {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    overflow: hidden; 
+    background: linear-gradient(to right, #ccbfbf, #8bdd2e, #faf9f9);
+}
+
+.banner:hover {
+    background-image: url('https://mid-noticias.curitiba.pr.gov.br/2025/00482525.jpg'); /* Imagem de fundo ao passar o mouse */;
+    
+}
+
+main {
+    font-family: Arial, Helvetica, sans-serif;
+}
